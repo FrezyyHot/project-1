@@ -4,6 +4,7 @@ input.onButtonPressed(Button.A, function () {
     hazardTimer = 0
     sumLight = 0
     readingCount = 0
+    testID += 1
     basic.showIcon(IconNames.Yes)
     basic.pause(500)
 })
@@ -17,6 +18,7 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 let average = 0
+let testID = 0
 let readingCount = 0
 let sumLight = 0
 let hazardTimer = 0
@@ -27,7 +29,7 @@ loops.everyInterval(2000, function () {
     if (testRunning) {
         sumLight += input.lightLevel()
         readingCount += 1
-        serial.writeLine("" + Math.round((input.runningTime() - startTime) / 1000) + "," + input.lightLevel())
+        serial.writeLine("Test: " + testID + "," + Math.round((input.runningTime() - startTime) / 1000) + "," + input.lightLevel())
     }
 })
 basic.forever(function () {
